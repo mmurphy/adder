@@ -37,7 +37,10 @@ app.get('/sys/fix', (req, res) => {
 });
 app.get('/adder', (req, res) => {
   var start = Date.now();
-  var result = doAdd(parseInt(req.query.num1), parseInt(req.query.num2));
+  const num1 = parseInt(req.query.num1);
+  const num2 = parseInt(req.query.num2);
+  var result = doAdd(num1, num2);
+  log(`returning: ${num1} + ${num2} == ${result}`);
   res.json({
     result: result,
     duration: Date.now() - start,
